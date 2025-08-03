@@ -1,8 +1,10 @@
 const express = require('express')
 const route = express.Router()
-const { getPresence, addPresence } = require('../../../controller/presenceController')
+const { getPresence, signPresence, signoutPresence, getPresenceByEmployee } = require('../../../controller/presenceController')
 
 route.get('/', getPresence)
-route.post('/add', addPresence)
+route.get('/:employee_id', getPresenceByEmployee)
+route.post('/signin', signPresence)
+route.post('/signout', signoutPresence)
 
 module.exports = route

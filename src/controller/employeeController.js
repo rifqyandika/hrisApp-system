@@ -5,15 +5,20 @@ const employee = {
     addEmployee: async (req, res) => {
         try {
             const payload = req.body;
+            const file = req.file;
+            if (!file || !file.path) {
+                return response.failed(res, 'File upload failed or no file provided');
+            }
             const existing = await Employee.findOne({ nik: payload.nik });
             if (existing) {
                 return response.failed(res, 'NIK already exist');
             }
+            payload.foto = file.path
             const newEmployee = new Employee(payload);
             const data = await newEmployee.save();
-            response.success(res, data, 'Add Employee Complete');
+            return response.success(res, data, 'Add Employee Complete');
         } catch (err) {
-            response.failed(res, err.message);
+            return response.failed(res, err.message);
         }
     },
 

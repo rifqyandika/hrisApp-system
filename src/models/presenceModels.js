@@ -6,6 +6,9 @@ const presenceSchema = new mongoose.Schema({
         ref: 'Employee',
         required: true
     },
+    nama_lengkap: {
+        type: String
+    },
     tanggal: {
         type: String, // Format: "YYYY-MM-DD"
         required: true
@@ -13,7 +16,7 @@ const presenceSchema = new mongoose.Schema({
     jam_masuk: {
         type: String // Format: "HH:mm" misal "08:12"
     },
-    jam_pulang: {
+    jam_keluar: {
         type: String
     },
     status: {
