@@ -1,7 +1,7 @@
 const express = require('express')
 const route = express.Router()
 const { allEmployee, addEmployee, getEmployee, updateEmployee, deleteEmploye } = require('../../../controller/employeeController')
-const upload = require('../../../middleware/upload')
+const upload = require('../../../helper/upload')
 
 route.get('/', allEmployee)
 route.get('/:id', getEmployee)
